@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Wonders</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+   
+    
+    <nav>
+        <div class="nav-left">
+            <a href="/" class="logo">Nature Wonders</a>
+        </div>
+        <div class="nav-right">
+            <a href="/admin" id="adminLink" style="display: none;">Admin</a>
+            <span id="usernameDisplay"></span>
+            <a href="#" id="logoutLink" style="display: none;">Logout</a>
+            <a href="/upload" id="uploadLink" style="display: none;">Upload</a>
+            <a href="/register" id="registerLink">Register</a>
+            <a href="/login" id="loginLink">Login</a>
+        </div>
+    </nav>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search videos...">
+    </div>
+
+    <div class="container">
+        
+        <div class="video-player-info">
+            <h2>Nature Wonders</h2>
+            <p class="description">Explore and share captivating videos of nature and animals in their most fascinating moments.</p>
+        </div>
+        <div id="videoList" class="video-grid"></div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

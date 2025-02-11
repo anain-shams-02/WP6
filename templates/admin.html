@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/" class="logo">Admin Dashboard</a>
+        </div>
+        <div class="nav-right">
+            <a href="/">Home</a>
+            <a href="#" id="logoutLink">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Admin Panel</h1>
+        
+        <div class="admin-section">
+            <h2>Users</h2>
+            <div id="usersList" class="admin-table"></div>
+        </div>
+
+        <div class="admin-section">
+            <h2>Videos</h2>
+            <div id="videosList" class="admin-table"></div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
