@@ -1,62 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Page title -->
     <title>Nature Wonders</title>
-    
-    <!-- Link to the external CSS file for styling -->
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <!-- Navigation bar -->
     <nav>
-        <!-- Left side of the navbar with logo -->
         <div class="nav-left">
             <a href="/" class="logo">Nature Wonders</a>
         </div>
-        
-        <!-- Right side of the navbar with links -->
         <div class="nav-right">
-            <!-- Admin link (hidden by default) -->
             <a href="/admin" id="adminLink" style="display: none;">Admin</a>
-            
-            <!-- Placeholder to display the logged-in username -->
             <span id="usernameDisplay"></span>
-            
-            <!-- Logout link (hidden by default) -->
             <a href="#" id="logoutLink" style="display: none;">Logout</a>
-            
-            <!-- Upload link (hidden by default) -->
             <a href="/upload" id="uploadLink" style="display: none;">Upload</a>
-            
-            <!-- Register and Login links -->
             <a href="/register" id="registerLink">Register</a>
             <a href="/login" id="loginLink">Login</a>
         </div>
     </nav>
-
-    <!-- Search bar for videos -->
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search videos...">
     </div>
-
-    <!-- Main content container -->
     <div class="container">
-        <!-- Video player and description section -->
         <div class="video-player-info">
             <h2>Nature Wonders</h2>
             <p class="description">Explore and share captivating videos of nature and animals in their most fascinating moments.</p>
         </div>
-        
-        <!-- Container to display the list of videos -->
         <div id="videoList" class="video-grid"></div>
     </div>
-
-    <!-- Link to the external JavaScript file for interactivity -->
     <script src="/static/script.js"></script>
 </body>
 </html>

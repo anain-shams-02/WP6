@@ -1,21 +1,16 @@
-/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styling */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #e0f7fa; /* Nature-inspired background color */
+    background-color: #e0f7fa;
     color: #333;
 }
 
-/* --------------------------
-   Navigation Bar
-   -------------------------- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -34,18 +29,12 @@ nav a:hover {
     color: #ddd;
 }
 
-/* --------------------------
-   Container
-   -------------------------- */
 .container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
-/* --------------------------
-   Video Grid
-   -------------------------- */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -78,9 +67,6 @@ nav a:hover {
     margin-bottom: 0.5rem;
 }
 
-/* --------------------------
-   Buttons
-   -------------------------- */
 button {
     background: #00796b;
     color: white;
@@ -94,9 +80,6 @@ button:hover {
     background: #004d40;
 }
 
-/* --------------------------
-   Auth Page Styling
-   -------------------------- */
 .auth-container {
     display: flex;
     justify-content: center;
@@ -156,9 +139,6 @@ button:hover {
     text-decoration: underline;
 }
 
-/* --------------------------
-   Search Bar
-   -------------------------- */
 .search-container {
     margin: 1rem auto;
     width: 100%;
@@ -175,9 +155,6 @@ button:hover {
     font-size: 1rem;
 }
 
-/* --------------------------
-   Video Player Information
-   -------------------------- */
 .video-player-info {
     text-align: center;
     margin: 2rem 0;
@@ -198,9 +175,6 @@ button:hover {
     font-style: italic;
 }
 
-/* --------------------------
-   Admin Dashboard
-   -------------------------- */
 .admin-section {
     margin: 2rem 0;
     padding: 1rem;
