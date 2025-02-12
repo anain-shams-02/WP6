@@ -1,8 +1,22 @@
-// ======================
-// Authentication Handlers
-// ======================
+// ==============================================
+// Main Application JavaScript
+// ==============================================
 
-// Handle registration form submission
+// Initialize core functionality when the page loads
+window.onload = () => {
+    updateAuthState();
+    if (window.location.pathname === '/') {
+        loadVideos();
+    } else if (window.location.pathname === '/admin') {
+        loadAdminData();
+    }
+};
+
+// ==============================================
+// Authentication & Session Management
+// ==============================================
+
+// Handle new user registration
 document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = {
@@ -25,9 +39,7 @@ document.getElementById('registerForm')?.addEventListener('submit', async (e) =>
     }
 });
 
-// Handle login form submission
-// Login form handler
-// Handle login form submission
+// Process user login and store session data
 document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -48,18 +60,13 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (data.success) {
-            // Store user info in sessionStorage
+            // Store essential user info in session storage
             sessionStorage.setItem('user_id', data.user_id);
             sessionStorage.setItem('username', data.username);
             sessionStorage.setItem('is_admin', data.is_admin);
 
-            // Debug log to verify sessionStorage
             console.log("Session Storage after login:", sessionStorage);
-
-            // Update UI
             updateAuthState();
-
-            // Redirect to the appropriate page
             window.location.href = data.redirect;
         } else {
             alert(data.error || 'Login failed');
@@ -70,30 +77,43 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     }
 });
 
-// Update UI based on login status
+// Handle user logout
+document.getElementById('logoutLink')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    sessionStorage.clear();
+    window.location.href = '/';
+});
+
+// Update UI elements based on user's authentication status
 function updateAuthState() {
     const username = sessionStorage.getItem('username');
     const isLoggedIn = !!sessionStorage.getItem('user_id');
-    const isAdmin = sessionStorage.getItem('is_admin') === 'true'; // Ensure lowercase comparison
-    document.getElementById('adminLink').style.display = isAdmin ? 'inline' : 'none'; 
-    document.getElementById('usernameDisplay').textContent = username ? `Hi, ${username}` : '';
-    document.getElementById('logoutLink').style.display = isLoggedIn ? 'inline' : 'none';
-    document.getElementById('uploadLink').style.display = isLoggedIn ? 'inline' : 'none';
-    document.getElementById('registerLink').style.display = isLoggedIn ? 'none' : 'inline';
-    document.getElementById('loginLink').style.display = isLoggedIn ? 'none' : 'inline';
+    const isAdmin = sessionStorage.getItem('is_admin') === 'true';
+
+    // Get all relevant UI elements
+    const elements = {
+        adminLink: document.getElementById('adminLink'),
+        usernameDisplay: document.getElementById('usernameDisplay'),
+        logoutLink: document.getElementById('logoutLink'),
+        uploadLink: document.getElementById('uploadLink'),
+        registerLink: document.getElementById('registerLink'),
+        loginLink: document.getElementById('loginLink')
+    };
+
+    // Update visibility and content of UI elements
+    if (elements.adminLink) elements.adminLink.style.display = isAdmin ? 'inline' : 'none';
+    if (elements.usernameDisplay) elements.usernameDisplay.textContent = username ? `Hi, ${username}` : '';
+    if (elements.logoutLink) elements.logoutLink.style.display = isLoggedIn ? 'inline' : 'none';
+    if (elements.uploadLink) elements.uploadLink.style.display = isLoggedIn ? 'inline' : 'none';
+    if (elements.registerLink) elements.registerLink.style.display = isLoggedIn ? 'none' : 'inline';
+    if (elements.loginLink) elements.loginLink.style.display = isLoggedIn ? 'none' : 'inline';
 }
 
-// Initialize when page loads
-window.onload = () => {
-    updateAuthState();
-    if (window.location.pathname === '/') {
-        loadVideos();
-    }
-};
-// Video Functionality
-// ====================
+// ==============================================
+// Video Management
+// ==============================================
 
-// Handle video upload
+// Handle video upload submissions
 document.getElementById('uploadForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -111,7 +131,7 @@ document.getElementById('uploadForm')?.addEventListener('submit', async (e) => {
     }
 });
 
-// Load and display videos
+// Fetch and display video content
 async function loadVideos() {
     try {
         const searchTerm = document.getElementById('searchInput')?.value || '';
@@ -123,6 +143,7 @@ async function loadVideos() {
         
         const isAdmin = sessionStorage.getItem('is_admin') === 'True';
 
+        // Generate HTML for each video
         videoList.innerHTML = videos.map(video => `
             <div class="video-item">
                 <h3>${video.title}</h3>
@@ -140,12 +161,12 @@ async function loadVideos() {
     }
 }
 
-// Add search input listener
+// Enable live search functionality
 document.getElementById('searchInput')?.addEventListener('input', () => {
     loadVideos();
 });
 
-// Delete video (admin only)
+// Handle video deletion (admin only)
 async function deleteVideo(videoId) {
     if (!confirm('Are you sure you want to delete this video?')) return;
     
@@ -161,51 +182,14 @@ async function deleteVideo(videoId) {
     }
 }
 
-// ====================
-// Session Management
-// ====================
+// ==============================================
+// Admin Dashboard Management
+// ==============================================
 
-// Update UI based on login status
-function updateAuthState() {
-    const username = sessionStorage.getItem('username');
-    const isLoggedIn = !!sessionStorage.getItem('user_id');
-    const isAdmin = sessionStorage.getItem('is_admin') === 'true'; // Ensure lowercase comparison
-
-    const adminLink = document.getElementById('adminLink');
-    const usernameDisplay = document.getElementById('usernameDisplay');
-    const logoutLink = document.getElementById('logoutLink');
-    const uploadLink = document.getElementById('uploadLink');
-    const registerLink = document.getElementById('registerLink');
-    const loginLink = document.getElementById('loginLink');
-
-    console.log({ adminLink, usernameDisplay, logoutLink, uploadLink, registerLink, loginLink });
-
-    if (adminLink) adminLink.style.display = isAdmin ? 'inline' : 'none';
-    if (usernameDisplay) usernameDisplay.textContent = username ? `Hi, ${username}` : '';
-    if (logoutLink) logoutLink.style.display = isLoggedIn ? 'inline' : 'none';
-    if (uploadLink) uploadLink.style.display = isLoggedIn ? 'inline' : 'none';
-    if (registerLink) registerLink.style.display = isLoggedIn ? 'none' : 'inline';
-    if (loginLink) loginLink.style.display = isLoggedIn ? 'none' : 'inline';
-}
-
-// Handle logout
-document.getElementById('logoutLink')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    sessionStorage.clear();
-    window.location.href = '/';
-});
-
-// Initialize when page loads
-window.onload = () => {
-    updateAuthState();
-    if (window.location.pathname === '/') {
-        loadVideos();
-    }
-};
-// Load Admin Dashboard Data
+// Load and display admin dashboard data
 async function loadAdminData() {
     try {
-        // Load users
+        // Fetch and display user management table
         const usersResponse = await fetch('/admin/users');
         const users = await usersResponse.json();
         const usersList = document.getElementById('usersList');
@@ -238,7 +222,7 @@ async function loadAdminData() {
             </table>
         `;
 
-        // Load videos
+        // Fetch and display video management table
         const videosResponse = await fetch('/videos');
         const videos = await videosResponse.json();
         const videosList = document.getElementById('videosList');
@@ -265,13 +249,12 @@ async function loadAdminData() {
                 </tbody>
             </table>
         `;
-
     } catch (err) {
         console.error('Admin data load error:', err);
     }
 }
 
-// Admin Actions
+// Handle user deletion from admin dashboard
 async function deleteUser(userId) {
     if (!confirm('Delete this user and all their videos?')) return;
     
@@ -285,6 +268,7 @@ async function deleteUser(userId) {
     }
 }
 
+// Toggle admin privileges for users
 async function toggleAdmin(userId) {
     try {
         const response = await fetch(`/admin/users/${userId}/toggle-admin`, { method: 'POST' });
@@ -294,9 +278,4 @@ async function toggleAdmin(userId) {
     } catch (err) {
         alert('Action failed');
     }
-}
-
-// Initialize admin dashboard
-if (window.location.pathname === '/admin') {
-    loadAdminData();
 }

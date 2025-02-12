@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title -->
     <title>Register - Video Portal</title>
+    
+    <!-- Link to the external CSS file for styling -->
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    <!-- Navigation bar -->
     <nav>
+        <!-- Left side of the navbar with logo -->
         <div class="nav-left">
             <a href="/" class="logo">Nature Wonders</a>
         </div>
+        
+        <!-- Right side of the navbar with links -->
         <div class="nav-right">
-            <a href="/login">Login</a>
+            <a href="/login">Login</a> <!-- Link to the login page -->
         </div>
     </nav>
 
+    <!-- Main content container for the registration form -->
     <div class="auth-container">
         <div class="auth-card">
+            <!-- Form heading -->
             <h2>Create Account</h2>
+            
+            <!-- Registration form -->
             <form id="registerForm">
+                <!-- Username input field -->
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" required>
                 </div>
                 
+                <!-- Email input field -->
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 
+                <!-- Password input field -->
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
                 
+                <!-- Submit button -->
                 <button type="submit">Register</button>
             </form>
+            
+            <!-- Redirect link to the login page -->
             <p class="auth-redirect">
                 Already have an account? <a href="/login">Sign in</a>
             </p>
         </div>
     </div>
 
+    <!-- Link to the external JavaScript file for interactivity -->
     <script src="/static/script.js"></script>
 </body>
 </html>

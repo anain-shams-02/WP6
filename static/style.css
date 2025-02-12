@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+/* Body Styling */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -12,7 +13,9 @@ body {
     color: #333;
 }
 
-/* Navigation Bar */
+/* --------------------------
+   Navigation Bar
+   -------------------------- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -31,14 +34,18 @@ nav a:hover {
     color: #ddd;
 }
 
-/* Container */
+/* --------------------------
+   Container
+   -------------------------- */
 .container {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
-/* Video Grid */
+/* --------------------------
+   Video Grid
+   -------------------------- */
 .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -50,7 +57,7 @@ nav a:hover {
     background: #f5f5f5;
     padding: 1rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .video-item video {
@@ -71,7 +78,9 @@ nav a:hover {
     margin-bottom: 0.5rem;
 }
 
-/* Buttons */
+/* --------------------------
+   Buttons
+   -------------------------- */
 button {
     background: #00796b;
     color: white;
@@ -85,7 +94,9 @@ button:hover {
     background: #004d40;
 }
 
-/* Auth Page Styling */
+/* --------------------------
+   Auth Page Styling
+   -------------------------- */
 .auth-container {
     display: flex;
     justify-content: center;
@@ -98,7 +109,7 @@ button:hover {
     background: white;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
 }
@@ -145,14 +156,28 @@ button:hover {
     text-decoration: underline;
 }
 
-/* Search Bar */
+/* --------------------------
+   Search Bar
+   -------------------------- */
 .search-container {
-    margin: 1rem 0;
+    margin: 1rem auto;
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
 }
 
-/* Video Player Information */
+#searchInput {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* --------------------------
+   Video Player Information
+   -------------------------- */
 .video-player-info {
     text-align: center;
     margin: 2rem 0;
@@ -173,13 +198,15 @@ button:hover {
     font-style: italic;
 }
 
-/* Admin Dashboard */
+/* --------------------------
+   Admin Dashboard
+   -------------------------- */
 .admin-section {
     margin: 2rem 0;
     padding: 1rem;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .admin-table {
@@ -191,7 +218,8 @@ button:hover {
     border-collapse: collapse;
 }
 
-.admin-table th, .admin-table td {
+.admin-table th,
+.admin-table td {
     padding: 0.8rem;
     border-bottom: 1px solid #ddd;
     text-align: left;
@@ -205,21 +233,4 @@ button:hover {
     margin-right: 0.5rem;
     padding: 0.3rem 0.6rem;
     font-size: 0.9rem;
-}
-
-/* Centered and Shorter Search Bar */
-.search-container {
-    margin: 1rem auto;
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    justify-content: center;
-}
-
-#searchInput {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
 }
